@@ -14,6 +14,8 @@ const addUser = async (userToAdd) => {
   return addedUser;
 };
 
-const deleteUser = () => {};
+const deleteUser = () => {
+  return;
+};
 
 export { getUsers, addUser, deleteUser };

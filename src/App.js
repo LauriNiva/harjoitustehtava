@@ -69,7 +69,14 @@ export default function App() {
       </header>
       <div>
         {users
-          ? users.map((user) => <UserCard key={user.id} user={user} />)
+          ? users.map((user) => (
+              <UserCard
+                key={user.id}
+                user={user}
+                users={users}
+                setUsers={setUsers}
+              />
+            ))
           : 'Loading...'}
       </div>
     </div>
