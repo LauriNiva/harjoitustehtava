@@ -19,3 +19,13 @@ body {
   max-width: 1200px;
   margin: auto;
 }
+
+.user-form input {
+  color: black;
+  padding: 4px
+}
+
+.user-form label {
+  display: flex;
+  flex-direction: column;
+}
