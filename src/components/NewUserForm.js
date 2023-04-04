@@ -55,7 +55,7 @@ export default function NewUserForm({ users, setUsers }) {
   return (
     <>
       <button
-        className="border-2 font-bold p-2 rounded-sm"
+        className="border-2 font-bold p-2 rounded-sm hover:bg-indigo-400"
         onClick={() => setFormVisible(true)}
       >
         Add User
