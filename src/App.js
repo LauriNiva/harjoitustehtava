@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import './styles.css';
 import UserCard from './components/UserCard';
 import NewUserForm from './components/NewUserForm';
+import { getUsers } from './services/users';
 
 /**
  *  ///// KÄYTTÄJIEN HALLINTAPANEELI /////
@@ -54,19 +55,17 @@ export default function App() {
 
   useEffect(() => {
     const fetchUsers = async () => {
-      const res = await fetch('https://jsonplaceholder.typicode.com/users');
-      const data = await res.json();
-      setUsers(data);
+      const initialUsers = await getUsers();
+      setUsers(initialUsers);
     };
     fetchUsers();
   }, []);
 
   return (
     <div className="bg-indigo-600 p-2 rounded-md text-neutral-200">
-      <header className='flex justify-between p-3'>
-        <h1 className='text-4xl font-black'>UserPanel</h1>
-      <NewUserForm />
-        
+      <header className="flex justify-between p-3">
+        <h1 className="text-4xl font-black">UserPanel</h1>
+        <NewUserForm />
       </header>
       <div>
         {users
@@ -76,4 +75,3 @@ export default function App() {
     </div>
   );
 }
-
