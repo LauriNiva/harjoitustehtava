@@ -63,12 +63,11 @@ export default function App() {
 
   return (
     <div className="bg-indigo-600 p-2 rounded-md text-neutral-200">
-      <div>
-        <button className=" border-2 p-2 rounded-sm">
-          Add User
-        </button>
-      </div>
+      <header className='flex justify-between p-3'>
+        <h1 className='text-4xl font-black'>UserPanel</h1>
       <NewUserForm />
+        
+      </header>
       <div>
         {users
           ? users.map((user) => <UserCard key={user.id} user={user} />)
