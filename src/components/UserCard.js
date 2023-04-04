@@ -8,7 +8,7 @@ export default function UserCard({ user, users, setUsers }) {
     if (
       window.confirm(`Are you sure you want to delete user ${user.username}?`)
     ) {
-      await deleteUser();
+      // await deleteUser();
       setUsers(users.filter((u) => u.id !== user.id));
     }
   };
@@ -54,14 +54,16 @@ export default function UserCard({ user, users, setUsers }) {
               <p className="text-lg font-light">{user.company.bs}</p>
             </div>
           </div>
-          {visible && (
-            <button
-              onClick={handleDeleteUser}
-              className="border-2 mt-2 p-1 rounded-sm hover:bg-pink-600 font-semibold"
-            >
-              Delete
-            </button>
-          )}
+          <div className="flex justify-end">
+            {visible && (
+              <button
+                onClick={handleDeleteUser}
+                className="border-2 mt-2 p-1 rounded-sm hover:bg-pink-600 font-semibold"
+              >
+                Delete
+              </button>
+            )}
+          </div>
         </div>
       )}
     </div>
