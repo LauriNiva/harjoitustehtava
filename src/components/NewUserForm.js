@@ -63,8 +63,10 @@ export default function NewUserForm({ users, setUsers }) {
       {formVisible && (
         <div className="absolute z-50 bg-slate-50 bg-opacity-80 top-0 left-0 w-full h-full">
           <div className="max-w-screen-lg m-auto">
-            <div className="bg-indigo-700 my-2 p-3 rounded-md">
-              Add new user
+            <div className="bg-indigo-700 my-2 p-5 rounded-md">
+              <p className='text-xl font-bold mb-4'>
+                Add new user
+                </p>
               <form className="user-form" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-4 gap-x-4">
                   <label>
@@ -91,7 +93,7 @@ export default function NewUserForm({ users, setUsers }) {
                     Email
                     <input
                       required
-                      type="text"
+                      type="email"
                       name="email"
                       placeholder=""
                       onChange={handleChange}
@@ -160,7 +162,7 @@ export default function NewUserForm({ users, setUsers }) {
                     />
                   </label>
                   <label>
-                    lat
+                    Latitude
                     <input
                       required
                       type="text"
@@ -170,7 +172,7 @@ export default function NewUserForm({ users, setUsers }) {
                     />
                   </label>
                   <label>
-                    lng
+                    Longitude
                     <input
                       required
                       type="text"
@@ -212,7 +214,7 @@ export default function NewUserForm({ users, setUsers }) {
                     />
                   </label>
                 </div>
-                <div className="flex justify-between mt-5">
+                <div className="flex justify-between mt-8">
                   <button
                     onClick={() => {
                       setFormVisible(false);
