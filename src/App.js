@@ -65,7 +65,7 @@ export default function App() {
     <div className="bg-indigo-600 p-2 rounded-md text-neutral-200">
       <header className="flex justify-between p-3">
         <h1 className="text-4xl font-black">UserPanel</h1>
-        <NewUserForm />
+        <NewUserForm users={users} setUsers={setUsers} />
       </header>
       <div>
         {users

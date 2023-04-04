@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import useForm from '../helpers/useForm';
+import { addUser } from '../services/users';
 
-export default function NewUserForm() {
+export default function NewUserForm({ users, setUsers }) {
   const [formVisible, setFormVisible] = useState(false);
 
   const { inputs, handleChange, clearForm } = useForm({
@@ -21,9 +22,34 @@ export default function NewUserForm() {
     bs: '',
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(inputs);
+    const newUser = {
+      name: inputs.name,
+      username: inputs.username,
+      email: inputs.email,
+      address: {
+        street: inputs.street,
+        suite: inputs.suite,
+        city: inputs.city,
+        zipcode: inputs.zipcode,
+        geo: {
+          lat: inputs.lat,
+          lng: inputs.lng,
+        },
+      },
+      phone: inputs.phone,
+      website: inputs.website,
+      company: {
+        name: inputs.companyName,
+        catchPhrase: inputs.catchPhrase,
+        bs: inputs.bs,
+      },
+    };
+    const addedUser = await addUser(newUser);
+    setUsers(users.concat(addedUser));
+    setFormVisible(false);
+    clearForm();
   };
 
   return (
