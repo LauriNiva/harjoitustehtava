@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/harjoitustehtava/static/css/main.c0e80208.css",
+    "main.js": "/harjoitustehtava/static/js/main.cad649f8.js",
+    "index.html": "/harjoitustehtava/index.html",
+    "main.c0e80208.css.map": "/harjoitustehtava/static/css/main.c0e80208.css.map",
+    "main.cad649f8.js.map": "/harjoitustehtava/static/js/main.cad649f8.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c0e80208.css",
+    "static/js/main.cad649f8.js"
+  ]
+}
