@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/harjoitustehtava/static/css/main.c0e80208.css",
-    "main.js": "/harjoitustehtava/static/js/main.cad649f8.js",
+    "main.css": "/harjoitustehtava/static/css/main.fd108f84.css",
+    "main.js": "/harjoitustehtava/static/js/main.c442d8c5.js",
     "index.html": "/harjoitustehtava/index.html",
-    "main.c0e80208.css.map": "/harjoitustehtava/static/css/main.c0e80208.css.map",
-    "main.cad649f8.js.map": "/harjoitustehtava/static/js/main.cad649f8.js.map"
+    "main.fd108f84.css.map": "/harjoitustehtava/static/css/main.fd108f84.css.map",
+    "main.c442d8c5.js.map": "/harjoitustehtava/static/js/main.c442d8c5.js.map"
   },
   "entrypoints": [
-    "static/css/main.c0e80208.css",
-    "static/js/main.cad649f8.js"
+    "static/css/main.fd108f84.css",
+    "static/js/main.c442d8c5.js"
   ]
 }
