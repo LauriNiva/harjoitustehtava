@@ -1,11 +1,21 @@
 import { v4 as uuidv4 } from 'uuid';
 
-const BASE_URL = 'https://jsonplaceholder.typicode.com/users';
+const BASE_URL = 'https://jsonplaceholder.typicode.com/usersX';
 
 const getUsers = async () => {
-  const res = await fetch(BASE_URL);
-  const data = await res.json();
-  return data;
+  try {
+    const res = await fetch(BASE_URL);
+    if (!res.ok) {
+      throw new Error(
+        `Error while fetching users: ${res.status} ${res.statusText}`
+      );
+    }
+    const data = await res.json();
+    return { data };
+  } catch (error) {
+    console.log(error);
+    return { error };
+  }
 };
 
 const addUser = async (userToAdd) => {

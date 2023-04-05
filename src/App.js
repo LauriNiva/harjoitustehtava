@@ -52,11 +52,17 @@ import { getUsers } from './services/users';
 
 export default function App() {
   const [users, setUsers] = useState([]);
+  const [errorMessage, setErrorMessage] = useState();
 
   useEffect(() => {
     const fetchUsers = async () => {
-      const initialUsers = await getUsers();
-      setUsers(initialUsers);
+      const { data, error } = await getUsers();
+      if (error) {
+        setErrorMessage(error.message);
+      }
+      if (data) {
+        setUsers(data);
+      }
     };
     fetchUsers();
   }, []);
@@ -68,6 +74,7 @@ export default function App() {
         <NewUserForm users={users} setUsers={setUsers} />
       </header>
       <div>
+        {errorMessage && <div className="font-bold">{errorMessage}</div>}
         {users
           ? users.map((user) => (
               <UserCard
