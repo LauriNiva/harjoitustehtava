@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 
-const BASE_URL = 'https://jsonplaceholder.typicode.com/usersX';
+const BASE_URL = 'https://jsonplaceholder.typicode.com/users';
 
 const getUsers = async () => {
   try {
