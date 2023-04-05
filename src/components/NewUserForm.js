@@ -64,9 +64,7 @@ export default function NewUserForm({ users, setUsers }) {
         <div className="absolute z-50 bg-slate-50 bg-opacity-80 top-0 left-0 w-full h-full">
           <div className="max-w-screen-lg m-auto">
             <div className="bg-indigo-700 my-2 p-5 rounded-md">
-              <p className='text-xl font-bold mb-4'>
-                Add new user
-                </p>
+              <p className="text-xl font-bold mb-4">Add new user</p>
               <form className="user-form" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-4 gap-x-4">
                   <label>
