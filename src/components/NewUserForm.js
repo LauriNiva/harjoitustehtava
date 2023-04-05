@@ -4,6 +4,7 @@ import { addUser } from '../services/users';
 
 export default function NewUserForm({ users, setUsers }) {
   const [formVisible, setFormVisible] = useState(false);
+  const [errorMessage, setErrorMessage] = useState();
 
   const { inputs, handleChange, clearForm } = useForm({
     name: '',
@@ -24,6 +25,7 @@ export default function NewUserForm({ users, setUsers }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setErrorMessage();
     const newUser = {
       name: inputs.name,
       username: inputs.username,
@@ -46,10 +48,17 @@ export default function NewUserForm({ users, setUsers }) {
         bs: inputs.bs,
       },
     };
-    const addedUser = await addUser(newUser);
-    setUsers(users.concat(addedUser));
-    setFormVisible(false);
-    clearForm();
+    const { data, error } = await addUser(newUser);
+
+    if (error) {
+      setErrorMessage(error.message);
+      clearForm();
+    }
+    if (data) {
+      setUsers(users.concat(data));
+      setFormVisible(false);
+      clearForm();
+    }
   };
 
   return (
@@ -223,6 +232,7 @@ export default function NewUserForm({ users, setUsers }) {
                   >
                     Cancel
                   </button>
+                  <div className="text-red-500">{errorMessage}</div>
                   <button
                     className="p-2 border-2 border-green-400 rounded-sm font-bold text-green-400"
                     type="submit"

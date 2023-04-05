@@ -19,9 +19,15 @@ const getUsers = async () => {
 };
 
 const addUser = async (userToAdd) => {
-  const serverSideUserId = uuidv4();
-  const addedUser = { ...userToAdd, id: serverSideUserId };
-  return addedUser;
+  try {
+    const serverSideUserId = uuidv4();
+    const data = { ...userToAdd, id: serverSideUserId };
+    return {data};
+  } catch (error) {
+    console.log(error);
+    return {error};
+  }
+  
 };
 
 const deleteUser = () => {
