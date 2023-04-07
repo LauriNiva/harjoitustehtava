@@ -1,16 +1,10 @@
-import { v4 as uuidv4 } from 'uuid';
+import axios from 'axios';
 
-const BASE_URL = 'https://jsonplaceholder.typicode.com/users';
+const BASE_URL = 'https://ht-backend.azurewebsites.net/api/users';
 
 const getUsers = async () => {
   try {
-    const res = await fetch(BASE_URL);
-    if (!res.ok) {
-      throw new Error(
-        `Error while fetching users: ${res.status} ${res.statusText}`
-      );
-    }
-    const data = await res.json();
+    const { data } = await axios.get(BASE_URL);
     return { data };
   } catch (error) {
     console.log(error);
@@ -20,18 +14,22 @@ const getUsers = async () => {
 
 const addUser = async (userToAdd) => {
   try {
-    const serverSideUserId = uuidv4();
-    const data = { ...userToAdd, id: serverSideUserId };
-    return {data};
+    const { data } = await axios.post(BASE_URL, { newUserData: userToAdd });
+    return { data };
   } catch (error) {
     console.log(error);
-    return {error};
+    return { error };
   }
-  
 };
 
-const deleteUser = () => {
-  return;
+const deleteUser = async (userId) => {
+  try {
+   const request = await axios.delete(`${BASE_URL}/${userId}`);
+   return request;
+  } catch (error) {
+    console.log(error);
+    return { error };
+  }
 };
 
 export { getUsers, addUser, deleteUser };
