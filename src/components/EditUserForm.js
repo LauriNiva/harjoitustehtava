@@ -112,6 +112,8 @@ export default function EditUserForm({ user, users, setUsers }) {
                       required
                       type="text"
                       name="phone"
+                      pattern="^[0-9 ()+-]+$"
+                      title="Numbers or - + ( ) only"
                       value={inputs.phone}
                       onChange={handleChange}
                     />
@@ -164,6 +166,8 @@ export default function EditUserForm({ user, users, setUsers }) {
                       required
                       type="text"
                       name="zipcode"
+                      pattern="^[0-9 ()+-]+$"
+                      title="Numbers or - + ( ) only"
                       value={inputs.zipcode}
                       onChange={handleChange}
                     />
@@ -174,6 +178,8 @@ export default function EditUserForm({ user, users, setUsers }) {
                       required
                       type="text"
                       name="lat"
+                      pattern="^[0-9 ,.-]+$"
+                      title="Numbers or - , . only"
                       value={inputs.lat}
                       onChange={handleChange}
                     />
@@ -184,6 +190,8 @@ export default function EditUserForm({ user, users, setUsers }) {
                       required
                       type="text"
                       name="lng"
+                      pattern="^[0-9 ,.-]+$"
+                      title="Numbers or - , .  only"
                       value={inputs.lng}
                       onChange={handleChange}
                     />
