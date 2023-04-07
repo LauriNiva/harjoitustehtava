@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { deleteUser } from '../services/users';
+import EditUserForm from './EditUserForm';
 
 export default function UserCard({ user, users, setUsers }) {
   const [visible, setVisible] = useState(false);
@@ -59,14 +60,13 @@ export default function UserCard({ user, users, setUsers }) {
             </div>
           </div>
           <div className="flex justify-end">
-            {visible && (
-              <button
-                onClick={handleDeleteUser}
-                className="border-2 mt-2 p-1 rounded-sm hover:bg-pink-600 font-semibold"
-              >
-                Delete
-              </button>
-            )}
+            <EditUserForm user={user} users={users} setUsers={setUsers} />
+            <button
+              onClick={handleDeleteUser}
+              className="border-2 mt-2 p-1 rounded-sm hover:bg-pink-600 font-semibold"
+            >
+              Delete
+            </button>
           </div>
         </div>
       )}

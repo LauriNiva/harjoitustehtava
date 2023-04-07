@@ -32,4 +32,15 @@ const deleteUser = async (userId) => {
   }
 };
 
-export { getUsers, addUser, deleteUser };
+const editUser = async (userId, editedUser) => {
+  try {
+    console.log('editedUser', editedUser);
+    const { data } = await axios.patch(`${BASE_URL}/${userId}`, {updatedUserData: editedUser});
+    return { data };
+  } catch (error) {
+    console.log(error);
+    return { error };
+  }
+};
+
+export { getUsers, addUser, deleteUser, editUser };
