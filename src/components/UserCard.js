@@ -8,8 +8,12 @@ export default function UserCard({ user, users, setUsers }) {
     if (
       window.confirm(`Are you sure you want to delete user ${user.username}?`)
     ) {
-      // await deleteUser();
-      setUsers(users.filter((u) => u.id !== user.id));
+      const { error } = await deleteUser(user.id);
+      if (error) {
+        console.log(error);
+      } else {
+        setUsers(users.filter((u) => u.id !== user.id));
+      }
     }
   };
 
