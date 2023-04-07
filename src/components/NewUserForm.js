@@ -239,7 +239,7 @@ export default function NewUserForm({ users, setUsers }) {
                   >
                     Cancel
                   </button>
-                  <div className="text-red-500">{errorMessage}</div>
+                  <div className="text-xl font-bold text-red-500">{errorMessage}</div>
                   <button
                     className="p-2 border-2 border-green-400 rounded-sm font-bold text-green-400"
                     type="submit"
