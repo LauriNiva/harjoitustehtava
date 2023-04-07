@@ -54,7 +54,6 @@ export default function EditUserForm({ user, users, setUsers }) {
       setErrorMessage(error.message);
     }
     if (data) {
-      console.log('data editistä', data)
       setUsers(users.map(u => u.id === user.id ? data : u));
       setFormVisible(false);
       clearForm();
