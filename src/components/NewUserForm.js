@@ -52,7 +52,6 @@ export default function NewUserForm({ users, setUsers }) {
 
     if (error) {
       setErrorMessage(error.message);
-      clearForm();
     }
     if (data) {
       setUsers(users.concat(data));
@@ -82,7 +81,7 @@ export default function NewUserForm({ users, setUsers }) {
                       required
                       type="text"
                       name="name"
-                      placeholder=""
+                      value={inputs.name}
                       onChange={handleChange}
                     />
                   </label>
@@ -92,7 +91,7 @@ export default function NewUserForm({ users, setUsers }) {
                       required
                       type="text"
                       name="username"
-                      placeholder=""
+                      value={inputs.username}
                       onChange={handleChange}
                     />
                   </label>
@@ -102,7 +101,7 @@ export default function NewUserForm({ users, setUsers }) {
                       required
                       type="email"
                       name="email"
-                      placeholder=""
+                      value={inputs.email}
                       onChange={handleChange}
                     />
                   </label>
@@ -112,7 +111,7 @@ export default function NewUserForm({ users, setUsers }) {
                       required
                       type="text"
                       name="phone"
-                      placeholder=""
+                      value={inputs.phone}
                       onChange={handleChange}
                     />
                   </label>
@@ -122,7 +121,7 @@ export default function NewUserForm({ users, setUsers }) {
                       required
                       type="text"
                       name="website"
-                      placeholder=""
+                      value={inputs.website}
                       onChange={handleChange}
                     />
                   </label>
@@ -134,7 +133,7 @@ export default function NewUserForm({ users, setUsers }) {
                       required
                       type="text"
                       name="street"
-                      placeholder=""
+                      value={inputs.street}
                       onChange={handleChange}
                     />
                   </label>
@@ -144,7 +143,7 @@ export default function NewUserForm({ users, setUsers }) {
                       required
                       type="text"
                       name="suite"
-                      placeholder=""
+                      value={inputs.suite}
                       onChange={handleChange}
                     />
                   </label>
@@ -154,7 +153,7 @@ export default function NewUserForm({ users, setUsers }) {
                       required
                       type="text"
                       name="city"
-                      placeholder=""
+                      value={inputs.city}
                       onChange={handleChange}
                     />
                   </label>
@@ -164,7 +163,7 @@ export default function NewUserForm({ users, setUsers }) {
                       required
                       type="text"
                       name="zipcode"
-                      placeholder=""
+                      value={inputs.zipcode}
                       onChange={handleChange}
                     />
                   </label>
@@ -174,7 +173,7 @@ export default function NewUserForm({ users, setUsers }) {
                       required
                       type="text"
                       name="lat"
-                      placeholder=""
+                      value={inputs.lat}
                       onChange={handleChange}
                     />
                   </label>
@@ -184,7 +183,7 @@ export default function NewUserForm({ users, setUsers }) {
                       required
                       type="text"
                       name="lng"
-                      placeholder=""
+                      value={inputs.lng}
                       onChange={handleChange}
                     />
                   </label>
@@ -196,7 +195,7 @@ export default function NewUserForm({ users, setUsers }) {
                       required
                       type="text"
                       name="companyName"
-                      placeholder=""
+                      value={inputs.companyName}
                       onChange={handleChange}
                     />
                   </label>
@@ -206,7 +205,7 @@ export default function NewUserForm({ users, setUsers }) {
                       required
                       type="text"
                       name="catchPhrase"
-                      placeholder=""
+                      value={inputs.catchPhrase}
                       onChange={handleChange}
                     />
                   </label>
@@ -216,7 +215,7 @@ export default function NewUserForm({ users, setUsers }) {
                       required
                       type="text"
                       name="bs"
-                      placeholder=""
+                      value={inputs.bs}
                       onChange={handleChange}
                     />
                   </label>
