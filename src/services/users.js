@@ -18,6 +18,9 @@ const addUser = async (userToAdd) => {
     return { data };
   } catch (error) {
     console.log(error);
+    if (error?.response?.data?.error?.code === 11000) {
+      return { error: { message: 'Username must be unique' } };
+    }
     return { error };
   }
 };
@@ -34,7 +37,6 @@ const deleteUser = async (userId) => {
 
 const editUser = async (userId, editedUser) => {
   try {
-    console.log('editedUser', editedUser);
     const { data } = await axios.patch(`${BASE_URL}/${userId}`, {updatedUserData: editedUser});
     return { data };
   } catch (error) {
