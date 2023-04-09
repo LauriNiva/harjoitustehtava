@@ -1,14 +1,17 @@
 import { Dispatch, SetStateAction, useState } from 'react';
 import useForm from '../helpers/useForm';
 import { addUser } from '../services/users';
-import { UserType } from '../User.type';
+import { UserType } from '../types/User.type';
 
 type NewUserFormProps = {
   users: UserType[];
   setUsers: Dispatch<SetStateAction<UserType[]>>;
 };
 
-export default function NewUserForm({ users, setUsers }: NewUserFormProps): JSX.Element {
+export default function NewUserForm({
+  users,
+  setUsers,
+}: NewUserFormProps): JSX.Element {
   const [formVisible, setFormVisible] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string>('');
 

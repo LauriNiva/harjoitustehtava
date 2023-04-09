@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction, useState } from 'react';
 import { deleteUser } from '../services/users';
 import EditUserForm from './EditUserForm';
-import { UserType } from '../User.type';
+import { UserType } from '../types/User.type';
 
 type UserCardProps = {
   user: UserType;

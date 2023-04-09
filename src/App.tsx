@@ -3,7 +3,7 @@ import './styles.css';
 import UserCard from './components/UserCard';
 import NewUserForm from './components/NewUserForm';
 import { getUsers } from './services/users';
-import { UserType } from './User.type';
+import { UserType } from './types/User.type';
 
 export default function App() {
   const [users, setUsers] = useState<UserType[]>([]);

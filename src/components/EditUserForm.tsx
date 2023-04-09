@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction, useState } from 'react';
 import useForm from '../helpers/useForm';
 import { editUser } from '../services/users';
-import { UserType } from '../User.type';
+import { UserType } from '../types/User.type';
 
 type EditUserFormProps = {
   user: UserType;
@@ -9,7 +9,11 @@ type EditUserFormProps = {
   setUsers: Dispatch<SetStateAction<UserType[]>>;
 };
 
-export default function EditUserForm({ user, users, setUsers }: EditUserFormProps) {
+export default function EditUserForm({
+  user,
+  users,
+  setUsers,
+}: EditUserFormProps) {
   const [formVisible, setFormVisible] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string>('');
 
