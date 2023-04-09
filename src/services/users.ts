@@ -1,7 +1,8 @@
 import axios, { AxiosError } from 'axios';
 import { NewUserType, UserType } from '../User.type';
 
-const BASE_URL = 'https://ht-backend.azurewebsites.net/api/users';
+const BASE_URL = 'https://ht-backend-ts.azurewebsites.net/api/users';
+//const BASE_URL = 'https://ht-backend.azurewebsites.net/api/users';
 //const BASE_URL = 'http://localhost:3001/api/users';
 
 const getUsers = async () => {
