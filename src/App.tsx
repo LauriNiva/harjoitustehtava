@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import './styles.css';
-import UserCard from './components/UserCard.js';
-import NewUserForm from './components/NewUserForm.js';
+import UserCard from './components/UserCard';
+import NewUserForm from './components/NewUserForm';
 import { getUsers } from './services/users';
 import { UserType } from './User.type';
 
