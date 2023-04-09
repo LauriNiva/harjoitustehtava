@@ -1,32 +1,38 @@
-import { useState } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import useForm from '../helpers/useForm';
-import { editUser } from '../services/users';
+import { addUser } from '../services/users';
+import { UserType } from '../User.type';
 
-export default function EditUserForm({ user, users, setUsers }) {
-  const [formVisible, setFormVisible] = useState(false);
-  const [errorMessage, setErrorMessage] = useState();
+type NewUserFormProps = {
+  users: UserType[];
+  setUsers: Dispatch<SetStateAction<UserType[]>>;
+};
+
+export default function NewUserForm({ users, setUsers }: NewUserFormProps): JSX.Element {
+  const [formVisible, setFormVisible] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState<string>('');
 
   const { inputs, handleChange, clearForm } = useForm({
-    name: user.name,
-    username: user.username,
-    email: user.email,
-    phone: user.phone,
-    website: user.website,
-    street: user.address.street,
-    suite: user.address.suite,
-    city: user.address.city,
-    zipcode: user.address.zipcode,
-    lat: user.address.geo.lat,
-    lng: user.address.geo.lng,
-    companyName: user.company.name,
-    catchPhrase: user.company.catchPhrase,
-    bs: user.company.bs,
+    name: '',
+    username: '',
+    email: '',
+    street: '',
+    suite: '',
+    city: '',
+    zipcode: '',
+    lat: '',
+    lng: '',
+    phone: '',
+    website: '',
+    companyName: '',
+    catchPhrase: '',
+    bs: '',
   });
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setErrorMessage();
-    const editedUser = {
+    setErrorMessage('');
+    const newUser = {
       name: inputs.name,
       username: inputs.username,
       email: inputs.email,
@@ -48,13 +54,13 @@ export default function EditUserForm({ user, users, setUsers }) {
         bs: inputs.bs,
       },
     };
-    const { data, error } = await editUser(user.id, editedUser);
+    const { data, error } = await addUser(newUser);
 
     if (error) {
-      setErrorMessage(error.message);
+      setErrorMessage(error);
     }
     if (data) {
-      setUsers(users.map(u => u.id === user.id ? data : u));
+      setUsers(users.concat(data));
       setFormVisible(false);
       clearForm();
     }
@@ -63,16 +69,16 @@ export default function EditUserForm({ user, users, setUsers }) {
   return (
     <>
       <button
-        className="border-2 mt-2 mr-3 p-1 rounded-sm hover:bg-cyan-600 font-semibold"
+        className="border-2 font-bold p-2 rounded-sm hover:bg-indigo-400"
         onClick={() => setFormVisible(true)}
       >
-        Edit
+        Add User
       </button>
       {formVisible && (
         <div className="absolute z-50 bg-slate-50 bg-opacity-80 top-0 left-0 w-full h-full">
           <div className="max-w-screen-lg m-auto">
             <div className="bg-indigo-700 my-2 p-5 rounded-md">
-              <p className="text-xl font-bold mb-4">Edit user data</p>
+              <p className="text-xl font-bold mb-4">Add new user</p>
               <form className="user-form" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-4 gap-x-4">
                   <label>
@@ -239,12 +245,14 @@ export default function EditUserForm({ user, users, setUsers }) {
                   >
                     Cancel
                   </button>
-                  <div className="text-red-500">{errorMessage}</div>
+                  <div className="text-xl font-bold text-red-500">
+                    {errorMessage}
+                  </div>
                   <button
                     className="p-2 border-2 border-green-400 rounded-sm font-bold text-green-400"
                     type="submit"
                   >
-                    Save
+                    Add
                   </button>
                 </div>
               </form>

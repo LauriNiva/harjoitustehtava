@@ -1,15 +1,22 @@
-import { useState } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import { deleteUser } from '../services/users';
 import EditUserForm from './EditUserForm';
+import { UserType } from '../User.type';
 
-export default function UserCard({ user, users, setUsers }) {
+type UserCardProps = {
+  user: UserType;
+  users: UserType[];
+  setUsers: Dispatch<SetStateAction<UserType[]>>;
+};
+
+export default function UserCard({ user, users, setUsers }: UserCardProps) {
   const [visible, setVisible] = useState(false);
 
   const handleDeleteUser = async () => {
     if (
       window.confirm(`Are you sure you want to delete user ${user.username}?`)
     ) {
-      const { error } = await deleteUser(user.id);
+      const { error } = await deleteUser(user.id.toString());
       if (error) {
         console.log(error);
       } else {

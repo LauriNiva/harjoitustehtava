@@ -19,22 +19,28 @@ const addUser = async (userToAdd: NewUserType) => {
     const { data }: { data: UserType } = await axios.post(BASE_URL, {
       newUserData: userToAdd,
     });
-    return { data };
+    return { data, error: null };
   } catch (error) {
+    console.log(error);
     if (axios.isAxiosError(error)) {
-      console.log(error)
-      return { error: error.response?.data.error };
+      return { data: null, error: error.response?.data.error };
     }
-    return { error };
+    if (error instanceof Error) {
+      return { data: null, error: error.message };
+    }
+    return { data: null, error: null };
   }
 };
 
 const deleteUser = async (userId: string) => {
   try {
-    const request = await axios.delete(`${BASE_URL}/${userId}`);
-    return request;
+    await axios.delete(`${BASE_URL}/${userId}`);
+    return { data: '' };
   } catch (error) {
     console.log(error);
+    if (axios.isAxiosError(error)) {
+      return { error: error.message };
+    }
     return { error };
   }
 };
@@ -47,10 +53,16 @@ const editUser = async (userId: string, editedUser: NewUserType) => {
         updatedUserData: editedUser,
       }
     );
-    return { data };
+    return { data, error: '' };
   } catch (error) {
     console.log(error);
-    return { error };
+    if (axios.isAxiosError(error)) {
+      return { data: null, error: error.message };
+    }
+    if (error instanceof Error) {
+      return { data: null, error: error.message };
+    }
+    return { data: null, error: null };
   }
 };
 
