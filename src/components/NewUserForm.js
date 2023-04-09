@@ -51,7 +51,7 @@ export default function NewUserForm({ users, setUsers }) {
     const { data, error } = await addUser(newUser);
 
     if (error) {
-      setErrorMessage(error.message);
+      setErrorMessage(error);
     }
     if (data) {
       setUsers(users.concat(data));
